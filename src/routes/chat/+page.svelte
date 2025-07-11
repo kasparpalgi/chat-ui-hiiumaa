@@ -4,7 +4,7 @@
 	import chat from '$lib/components/svg/chat.svg';
 	import menu from '$lib/components/svg/menu.svg';
 	import logo from '$lib/components/svg/Header.svg';
-
+	import PromptScroll from './PromptScroll.svelte';
 	import world from '$lib/components/svg/icon-world.svg';
 	import imgfile from '$lib/components/svg/icon-imgai.svg';
 	import fileupload from '$lib/components/svg/icon-file.svg';
@@ -55,37 +55,40 @@
 			<IconButton icon={chat} alt="chat" onClick={() => setTool('chat')} />
 		</div>
 		<div class="flex flex-col">
-			<div class="flex flex-col rounded-xl bg-white p-2 shadow-md">
-				<input
-					type="text"
-					placeholder="Küsi midagi..."
-					class="w-full rounded-lg border border-gray-100 px-3 py-2 text-[16px] font-medium text-gray-800 placeholder-blue-500 outline-none"
-				/>
-
-				<div class="mt-2 flex justify-between">
-					<div class="flex gap-2">
-						<IconButton
-							icon={world}
-							alt="Web"
-							active={activeTool === 'world'}
-							onClick={() => setTool('world')}
-						/>
-						<IconButton
-							icon={imgfile}
-							alt="Image"
-							active={activeTool === 'img'}
-							onClick={() => setTool('img')}
-						/>
-						<IconButton
-							icon={fileupload}
-							alt="File"
-							active={activeTool === 'file'}
-							onClick={() => setTool('file')}
-						/>
-					</div>
-					<div class="flex gap-2">
-						<IconButton icon={microphone} alt="Mic" onClick={() => console.log('Mic clicked')} />
-						<IconButton icon={send} alt="Send" onClick={() => console.log('Send clicked')} />
+			<PromptScroll />
+			<div class="flex flex-col">
+				<div class="flex flex-col rounded-xl bg-white p-2 shadow-md">
+					<input
+						type="text"
+						placeholder="Küsi midagi..."
+						class="w-full rounded-lg border border-gray-100 px-3 py-2 text-[16px] font-medium text-gray-800 placeholder-blue-500 outline-none"
+					/>
+	
+					<div class="mt-2 flex justify-between">
+						<div class="flex gap-2">
+							<IconButton
+								icon={world}
+								alt="Web"
+								active={activeTool === 'world'}
+								onClick={() => setTool('world')}
+							/>
+							<IconButton
+								icon={imgfile}
+								alt="Image"
+								active={activeTool === 'img'}
+								onClick={() => setTool('img')}
+							/>
+							<IconButton
+								icon={fileupload}
+								alt="File"
+								active={activeTool === 'file'}
+								onClick={() => setTool('file')}
+							/>
+						</div>
+						<div class="flex gap-2">
+							<IconButton icon={microphone} alt="Mic" onClick={() => console.log('Mic clicked')} />
+							<IconButton icon={send} alt="Send" onClick={() => console.log('Send clicked')} />
+						</div>
 					</div>
 				</div>
 			</div>
@@ -104,7 +107,8 @@
 			<div
 				class="animate-slide-up absolute right-0 bottom-0 left-0 z-50 mx-auto w-full"
 				on:click|stopPropagation
-			style="width: 375px;">
+				style="width: 375px;"
+			>
 				<div class="rounded-t-xl bg-white p-4 shadow-lg">
 					<!-- Drag indicator -->
 					<div class="mx-auto mb-4 h-1.5 w-12 rounded-full bg-gray-300"></div>
